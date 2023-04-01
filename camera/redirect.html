@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โหลดวิดีโอจาก URL</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      #navbar-iframe  {
+      display : none;
+      height : 0;
+      visibility : hidden;
+      }
+      body, input, button {
+        font-family: 'Kanit', sans-serif;
+      }
+
+      .container {
+        max-width: 30rem;
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 2rem;
+        }
+      }
+
+      .form-control {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      #url-input {
+        min-width: 0;
+      }
+
+      button {
+        min-width: 8rem;
+      }
+
+      #url-input:focus {
+        border-color: #2563EB;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+      }
+
+      button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container absolute top-0 left-0 mx-8 my-8 p-4 rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold mb-4 text-center">โหลดวิดีโอจาก URL</h1>
+      <form id="url-form" class="flex flex-col items-center" onsubmit="loadUrl(event)">
+        <div class="relative flex items-stretch">
+          <span class="inline-flex items-center px-3 rounded-l-lg bg-gray-200 text-gray-500">
+            http://
+          </span>
+          <input id="url-input" type="text" class="flex-grow border border-gray-200 py-2 px-3 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="example.com/video">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 mt-4 rounded-lg hover:bg-blue-700">โหลดวิดีโอ</button>
+      </form>
+          </div>
+
+    <script>
+      function loadUrl(event) {
+        event.preventDefault();
+        const url = "http://" + document.getElementById('url-input').value + "/video";
+        window.location.href = url;
+      }
+    </script>
+  </body>
+</html>
+
